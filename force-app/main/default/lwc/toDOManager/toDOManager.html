@@ -1,0 +1,68 @@
+<!-- sldsValidatorIgnore -->
+<!-- sldsValidatorIgnore -->
+<template>
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col">
+            <lightning-card title="Add New Task" icon-name="standard:task">
+                <div class="slds-var-p-around_small">
+                    <lightning-input label="Enter Task " placeholder="Please enter task details😊"
+                        onchange={changeHnadler} name="taskName" value={taskName} class="taskname">
+                    </lightning-input>
+                    <lightning-input type="date" label="Set End Date" field-level-help="Default End DAte is Todays Date"
+                        required="true" message-when-value-missing="Kindly enter task name" onchange={changeHnadler}
+                        name="taskDate" value={taskDate}>
+                    </lightning-input>
+                    <div class="slds-var-p-around_small">
+                        <lightning-button label="Reset" onclick={resetHandler} variant="brand"
+                            class="slds-var-p-around_small">
+                        </lightning-button>
+
+                        <lightning-button label="Add Task" variant="brand" onclick={addHandler}
+                            class="slds-var-p-around_small">
+                        </lightning-button>
+                    </div>
+                </div>
+            </lightning-card>
+
+        </div>
+        <div class="slds-col">
+            <lightning-card title="To Do List" icon-name="standard:sales_path">
+
+                <div class="slds-var-p-around_small">
+
+                    <template for:each={incompletetask} for:item="currtask">
+                        <div key={currtask.taskname} class="slds-box slds-theme_shade">
+
+                            <div class="slds-grid slds-wrap">
+
+                                <div class="slds-col slds-size_8-of-12">
+                                    <p>{currtask.taskname}</p>
+                                    <p><lightning-formatted-date-time value="1547250828000" year="2-digit" month="short"
+                                            day="2-digit" weekday="long">
+                                        </lightning-formatted-date-time>
+                                    </p>
+
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_4-of-12">
+                                <lightning-button-icon icon-name="utility:delete" alternative-text="Delete"
+                                    class="slds-m-left_xx-small" title="Delete"></lightning-button-icon>
+
+                                <lightning-button-icon icon-name="utility:check" alternative-text="check"
+                                    class="slds-m-left_xx-small" title="Delete"></lightning-button-icon>
+
+                            </div>
+                        </div>
+                    </template>
+                </div>
+
+            </lightning-card>
+        </div>
+        <div class="slds-col">
+            <lightning-card title="Completed Task" icon-name="standard:task2">
+
+
+            </lightning-card>
+        </div>
+    </div>
+</template>
